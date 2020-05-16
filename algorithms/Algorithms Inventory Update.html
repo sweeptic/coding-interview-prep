@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <h2>Algorithms: Inventory Update</h2>
+   <script>
+
+      function updateInventory(...args) {
+         const res = Array.prototype.concat(...args)
+         res.map((item, index) => {
+            res.map((item_r, index_r) => {
+               if (item[1] === item_r[1] && item[0] !== item_r[0]) {
+                  item[0] = item[0] + item_r[0]
+                  res.splice(index_r, 1)
+               }
+            })
+
+         })
+
+         console.log(res.sort((a, b) => {
+            if (a[1] < b[1]) return -1
+         }))
+         return res
+      }
+
+      updateInventory([], [[2, "Hair Pin"], [3, "Half-Eaten Apple"], [67, "Bowling Ball"], [7, "Toothpaste"]])
+
+   </script>
+
+</body>
+
+</html>
