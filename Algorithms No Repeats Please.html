@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+
+
+   <script>
+
+      function permAlone(str) {
+         let perm = 0;
+         let array = [...str];
+         let len = array.length;
+         let it = [...array];
+
+         array.forEach(element => {
+
+            for (let index = 0; index <= len; index++) {
+               let dupl = false;
+
+               console.log(it);
+
+               it.map((item, index, array) => {
+                  if (item === array[index + 1]) dupl = true;
+               })
+
+
+               if (it[index + 1] !== undefined) {
+                  [it[index], it[index + 1]] = [it[index + 1], it[index]];
+               }
+
+
+   
+               !dupl ? perm++ : null;
+            }
+
+
+
+
+         });
+
+         console.log(perm)
+
+
+
+
+         // console.log(res)
+
+
+         return str;
+      }
+
+      permAlone('aabb');
+
+
+
+
+//a b c d
+// --------------------
+
+//a   b c d
+//a   b d c
+//a   c d b 
+//a   c b d
+//a   d c b
+//a   d b c
+//b   a c d
+//b   a d c 
+//b   c a d
+//b   c d a
+//b   d a c
+//b   d c a
+
+//c   a b d
+//c   a d b
+//c   b a d
+//c   b d a
+//c   d a b
+//c   d b a 
+
+//d   a b c
+//d   a c b
+//d   b a c
+//d   b c a 
+//d   c a b
+//d   c b a
+
+
+// -------------------------
+//a   a b b
+//a   a b b
+//a   b b a
+//a   b a b  x
+//a   b b a
+//a   b a b  x
+
+//a   a b b
+//a   a b b
+//a   b a b  x
+//a   b b a
+//a   b a b  x
+//a   b b a
+
+//b   a a b
+//b   a b a  x
+//b   a a b
+//b   a b a  x
+//b   b a a
+//b   b a a 
+
+//b   a a b
+//b   a b a  x
+//b   a a b
+//b   a b a  x
+//b   b a a
+//b   b a a
+
+//a a b
+//------------
+
+   //a   a b
+   //a   b a
+   //a   a b 
+   //a   b a
+   //b   a a 
+   //b   a a
+
+
+
+
+//aab   (aab, aab, aba, aba, baa, baa)
+//aba and aba
+
+   </script>
+</body>
+
+</html>
