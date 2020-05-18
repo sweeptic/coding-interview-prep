@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+      function permAlone(args) {
+
+         let array = [...args];
+         let permuts = []
+         let con = 0;
+
+         function rec(n) {
+            if (n === 1) {
+               // console.log(array, n);
+               permuts.push(array.slice())
+            } else {
+               for (let i = 0; i !== n; i++) {
+                  rec(n - 1)
+                  if (n % 2 === 0) {
+                     // console.log(' %2 start: ', array, ' n: ', n);
+                     [array[0], array[n - 1]] = [array[n - 1], array[0]]
+                     // console.log(' %2 after change: ', array, ' n: ', n);
+                  } else {
+                     // console.log(' else start: ', array);
+                     // console.log(' else start: ', array, ' n: ', n);
+                     [array[i], array[n - 1]] = [array[n - 1], array[i]];
+                     // console.log(' %2 after change: ', array, ' n: ', n);
+                  }
+               }
+            }
+         }
+
+         rec(array.length)
+
+         permuts.forEach(element => {
+            let bool = false;
+            element.map((item, index, arr) => {
+               if (item === arr[index + 1]) {
+                  bool = true
+               }
+            })
+            !bool ? con++ : null;
+         });
+
+         return con;
+      }
+
+
+      console.log(
+         permAlone("aab")
+      )
+
+//a b c d
+// --------------------
+
+//a   b c d
+//a   b d c
+//a   c d b 
+//a   c b d
+//a   d c b
+//a   d b c
+
+//b   a c d
+//b   a d c 
+//b   c a d
+//b   c d a
+//b   d a c
+//b   d c a
+
+//c   a b d
+//c   a d b
+//c   b a d
+//c   b d a
+//c   d a b
+//c   d b a 
+
+//d   a b c
+//d   a c b
+//d   b a c
+//d   b c a 
+//d   c a b
+//d   c b a
+
+
+// -------------------------
+//a   a b b
+//a   a b b
+//a   b b a
+//a   b a b  x
+//a   b b a
+//a   b a b  x
+
+//a   a b b
+//a   a b b
+//a   b a b  x
+//a   b b a
+//a   b a b  x
+//a   b b a
+
+//b   a a b
+//b   a b a  x
+//b   a a b
+//b   a b a  x
+//b   b a a
+//b   b a a 
+
+//b   a a b
+//b   a b a  x
+//b   a a b
+//b   a b a  x
+//b   b a a
+//b   b a a
+
+//a a b
+//------------
+
+   //a   a b
+   //a   b a
+   //a   a b 
+   //a   b a
+   //b   a a 
+   //b   a a
+
+
+
+
+//aab   (aab, aab, aba, aba, baa, baa)
+//aba and aba
+
+   </script>
+</body>
+
+</html>
