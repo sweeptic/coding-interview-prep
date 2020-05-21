@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+
+
+      function bubbleSort(array) {
+         let go = true;
+         for (let index = 0; go; index++) {
+            go = false;
+            for (let index = 1; index < array.length; index++) {
+               if (array[index] < array[index-1]) {
+                  [array[index], array[index - 1]] = [array[index - 1], array[index]]
+                  go = true;
+               }
+            }
+         }
+         return array;
+         // change code above this line
+      }
+
+      bubbleSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]);
+
+
+
+   </script>
+</body>
+
+</html>
