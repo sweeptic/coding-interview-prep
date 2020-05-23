@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+
+
+      function selectionSort(array) {
+         // change code below this line
+         console.log(array)
+
+         for (let index_a = 0; index_a < array.length; index_a++) {
+
+            let min = array[index_a];
+            let minIndex = index_a;
+
+            for (let index_b = index_a; index_b < array.length; index_b++) {
+               if (array[index_b] <  array[minIndex]) {
+                  // min = array[index_b];
+                  minIndex = index_b;
+               }
+            }
+        
+            [array[index_a], array[minIndex]] = [array[minIndex], array[index_a]]
+         }
+
+         console.log(array)
+
+         return array;
+         // change code above this line
+      }
+
+
+      selectionSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]);
+
+
+
+   </script>
+</body>
+
+</html>
