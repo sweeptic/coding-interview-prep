@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+
+      function merger(left, right) {
+         let merged = [];
+
+         let i = 0;
+         let j = 0;
+
+         while (i < left.length && j < right.length) {
+            left[i] < right[j] ? merged.push(left[i++]) : merged.push(right[j++])
+         }
+
+
+         while (i < left.length) {
+            merged.push(left[i++])
+         }
+
+         while (j < right.length) {
+            merged.push(right[j++])
+         }
+         
+         console.log(left, right, merged)
+         return merged;
+      }
+
+
+      function mergeSort(array) {
+         if (array.length === 1) return array
+         let middle = Math.floor(array.length / 2)
+         let left = mergeSort(array.slice(0, middle))
+         let right = mergeSort(array.slice(middle, array.length))
+
+         array = merger(left, right)
+         // console.log(array)
+         return array
+      }
+
+
+
+      console.log(mergeSort([6, 5, 3, 1, 8, 7, 2, 4]));
+
+
+
+
+   </script>
+</body>
+
+</html>
