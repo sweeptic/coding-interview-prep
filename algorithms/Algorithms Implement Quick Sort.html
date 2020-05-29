@@ -11,49 +11,32 @@
 
 
    <script>
-      //Swapping array elements via ES6 array destructuring
 
 
+      function quickSort(array) {
 
-      function quicksort(array) {
-         if (array.length <= 1) {
-            console.log(array)
-            return array;
-         }
+         if (array.length <= 0) return array;
 
-         var pivot = array[0];
+         let pivot = array[0];
+         let left = [];
+         let right = [];
 
-         var left = [];
-         var right = [];
+         array.map(
+            item => item !== pivot ? (item < pivot ? left.push(item) : right.push(item)) : null
 
-         for (var i = 1; i < array.length; i++) {
-            array[i] < pivot ? left.push(array[i]) : right.push(array[i]);
-         }
+         );
 
-         array.map((item,index) => {
-            item < pivot ?  left.push(item) : right.push(item);
-         })
+         return quickSort(left).concat(pivot, quickSort(right))
 
-         console.log('pivot:', pivot, 'left:', left, 'right:', right)
+      }
 
 
-         return quicksort(left).concat(pivot, quicksort(right));
-      };
-
-      var unsorted = [23, 45, 16, 37, 3, 99, 22];
-      //left 16 3 22
-      //right 45 37 99
-      var sorted = quicksort(unsorted);
-
-      console.log('Sorted array', sorted);
+      console.log(
+         quickSort([63, 123, 43, 2, 55, 1, 234, 92])
+      )
 
 
-
-      // test array:
-      // console.log(
-      //    quickSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92])
-      // )
-
+     
    </script>
 </body>
 
