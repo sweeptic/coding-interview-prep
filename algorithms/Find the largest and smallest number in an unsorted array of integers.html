@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+
+      function findNum(array) {
+
+         let min = array[0];
+         let max = array [0];
+
+         for (let index = 0; index < array.length; index++) {
+            const element = array[index];
+            if (element < min) min = element;
+            if (element > max) max = element;        
+         }
+         console.log('min', min)
+         console.log('max', max)
+      }
+
+
+      const arr = [1, 2, 3, 4, 100, 77, 211, 43, 1];
+      findNum(arr)
+
+   </script>
+
+
+</body>
+
+</html>

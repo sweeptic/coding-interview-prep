@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+
+      function findDuplicatedNumSet(array) {
+         let mySet = new Set();
+         array.map(item =>
+            mySet.has(item) ? console.log(item) : mySet.add(item))
+      }
+
+
+      function findDuplicatedNumObj(array) {
+         let obj = {}
+         for (let index = 0; index < array.length; index++) {
+            if (obj[array[index]])  return true;
+            else
+               obj[array[index]] = array[index];
+               console.log(obj)
+         }
+         
+      }
+
+
+
+      const arr = [1, 2, 3, 4, 5, 1, 7, 7, 7, 8, 6, 10];
+
+      console.log(findDuplicatedNumObj(arr));
+
+   </script>
+
+
+</body>
+
+</html>
