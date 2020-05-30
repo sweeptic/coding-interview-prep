@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+
+
+
+      function Stack() {
+         var collection = [];
+
+         this.push = function(item) {
+            collection[ collection.length ] = item
+         }
+
+         this.print = function () {
+            console.log(collection);
+         };
+
+         this.pop = function () {
+            if (collection.length > 0) {
+               return collection.splice(collection.length - 1, 1).toString();
+            }
+         }
+
+         this.peek = function () {
+            return collection[collection.length - 1]
+         }
+
+         this.isEmpty = function () {
+            return collection.length ? false : true
+
+         }
+
+         this.clear = function () {
+            collection = [];
+         }
+      }
+
+
+
+      let instance = new Stack();
+      instance.print();
+      instance.push(55)
+      instance.push(5)
+      instance.push(4)
+      instance.print();
+       console.log(instance.pop());
+      instance.print();
+      // console.log(instance.peek());
+      // console.log(instance.isEmpty());
+      // instance.clear();
+      // instance.print();
+
+
+
+   </script>
+
+
+</body>
+
+</html>
