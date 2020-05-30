@@ -15,20 +15,27 @@
 
       function quickSort(array) {
 
-         if (array.length <= 0) return array;
+         if (array <= 1) return array
 
          let pivot = array[0];
-         let left = [];
-         let right = [];
+         let left = []
+         let right = []
 
-         array.map(
-            item => item !== pivot ? (item < pivot ? left.push(item) : right.push(item)) : null
-
-         );
+         array.map(item => {
+            if (item !== pivot) {
+               if (item > pivot) {
+                  right.push(item)
+               } else {
+                  left.push(item)
+               }
+            }
+         })
 
          return quickSort(left).concat(pivot, quickSort(right))
-
       }
+
+
+
 
 
       console.log(
@@ -36,7 +43,52 @@
       )
 
 
-     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//       function quickSort(array) {
+
+// if (array.length <= 0) return array;
+
+// let pivot = array[0];
+// let left = [];
+// let right = [];
+
+// array.map(
+//    item => item !== pivot ? (item < pivot ? left.push(item) : right.push(item)) : null
+// );
+
+// return quickSort(left).concat(pivot, quickSort(right))
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    </script>
 </body>
 
