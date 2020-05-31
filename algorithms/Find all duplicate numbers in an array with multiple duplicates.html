@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+      function findDupl(array) {
+         let mySet = new Set();
+         let myDupl = new Set();
+
+         while (array.length) {
+            mySet.has(array[0]) ? myDupl.add(array.shift()) : mySet.add(array.shift())
+         }
+         console.log(myDupl)
+      }
+
+
+
+      const returnMultipleDupesArray = (arr) => {
+         let observed = {};
+         let dupesArray = [];
+
+         for (let i = 0; i < arr.length; i++) {
+
+            if (observed[arr[i]]) {
+               if (observed[arr[i]] === 1) {
+                  dupesArray.push(arr[i]);
+               }
+
+               observed[arr[i]] = observed[arr[i]] + 1;
+            } else {
+               observed[arr[i]] = 1;
+            }
+         }
+
+         return dupesArray;
+      }
+
+      const array = [1, 1, 2, 3, 4, 5, 6, 7, 8, 6, 6, 7, 7, 7, 10, 10];
+      findDupl(array);
+
+   </script>
+
+
+</body>
+
+</html>
