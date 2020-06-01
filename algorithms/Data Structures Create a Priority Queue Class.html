@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+      function PriorityQueue(param) {
+         this.collection = param;
+
+         this.printCollection = function () {
+            console.log(this.collection);
+         };
+
+
+         this.enqueue = function (param) {
+            this.collection.push(param)
+
+         }
+
+
+
+         this.dequeue = function () {
+
+            let nums = this.collection.map(x => x[1])
+            // console.log(nums)
+
+            let findNum = Math.min.apply(null, nums)
+            // console.log(nums)
+            // console.log(findNum)
+
+            let findIndex = nums.findIndex(x => x === findNum);
+            // console.log(findIndex)
+
+
+            let spliced =  this.collection.splice(findIndex, 1)
+
+            return spliced[0][0]
+
+
+
+         }
+
+
+         this.size = function () {
+            return this.collection.length;
+         }
+
+
+         this.isEmpty = function () {
+            return this.collection.length ? false : true
+         }
+
+      }
+
+
+
+      class PriorityQueue2 {
+         //this is an unsorted PriorityQueue
+         //O(1) to insert elements
+         //O(n) to pop elements because it searches for the priority
+         //O(1) to see if it is empty because it just looks at the value of length
+         //create a constructor with default parameters
+
+         constructor(param) {
+            this.collection = param;
+         }
+
+         printCollection() {
+            console.log(this.collection);
+         }
+
+         enqueue(element) {
+            return this.collection.push(element)
+         }
+
+         //this is a helper function to tell us what value is next to be popped
+         findPriority() {
+
+            var values = this.collection.map(function (keys) {
+               return keys[1];
+            });
+            var thePriority = Math.min.apply(null, values)
+            return this.collection.find(element => element[1] == thePriority)
+
+         }
+
+         dequeue() {
+            //set the item to be removed to the first priority found
+            let removeItem = this.findPriority()
+            //get the position of where it was so it can be spliced off
+            let removePosition = this.collection.indexOf(removeItem);
+            this.collection.splice(removePosition, 1)
+            //return only the item exclued the level of priority
+            return removeItem[0]
+
+         }
+         // get the size by just return the length O(1) time 
+         size() {
+            return this.collection.length
+         }
+
+         // returns if the queue is empty
+         isEmpty() {
+            return this.size() === 0;
+         }
+      }
+
+
+      let myPrQueue = new PriorityQueue([
+         // ['human', 5],
+         // ['robot', 1],
+         // ['tiger', 2],
+         ['ant', 3],
+         ['robot', 3],
+         ['reptilian', 3],
+         ['bird', 3]
+      ]
+      );
+
+      let myPrQueue2 = new PriorityQueue2([
+         // ['human', 5],
+         // ['robot', 1],
+         // ['tiger', 2],
+         ['ant', 3],
+         ['robot', 3],
+         ['reptilian', 3],
+         ['bird', 3]
+      ]
+      );
+       myPrQueue.enqueue(['cyborg', 3])
+      // myPrQueue.enqueue(['elephant', 0])
+      myPrQueue.printCollection()
+
+      // myPrQueue.enqueue(['cyborg', 3])
+      // myPrQueue.enqueue(['elephant', 3])
+      // myPrQueue.printCollection()
+      // // myPrQueue.printCollection()
+      myPrQueue.dequeue();
+      myPrQueue.dequeue();
+     console.log( myPrQueue.dequeue() );
+      // // myPrQueue.enqueue(['cyborg', 3])
+      // // myPrQueue.enqueue(['elephant', 3])
+      // // myPrQueue.enqueue(['cyborg', 1])
+      // // myPrQueue.enqueue(['elephant', 32])
+      // myPrQueue.dequeue();
+      // myPrQueue.dequeue();
+      // myPrQueue.dequeue();
+      // myPrQueue.dequeue();
+      // myPrQueue.dequeue();
+      // myPrQueue.dequeue();
+      // myPrQueue.enqueue(['cyborg', 3])
+      // myPrQueue.enqueue(['elephant', 3])
+      // myPrQueue.enqueue(['cyborg', 1])
+      // myPrQueue.enqueue(['elephant', 32])
+      // // console.log(myPrQueue.dequeue());
+      // // myPrQueue.dequeue();
+      // // myPrQueue.dequeue();
+      // // myPrQueue.dequeue();
+      // // myPrQueue.dequeue();
+      // // myPrQueue.dequeue();
+      // // myPrQueue.dequeue();
+      // // myPrQueue.dequeue(); 
+      // // myPrQueue.enqueue(['cyborg', 3])
+      // // myPrQueue.dequeue();
+
+
+      ////////////////////////////////////////////////////
+
+
+      myPrQueue2.enqueue(['cyborg', 3])
+      // myPrQueue2.enqueue(['elephant', 0])
+      myPrQueue2.printCollection()
+      // // myPrQueue.printCollection()
+      myPrQueue2.dequeue();
+      myPrQueue2.dequeue();
+     console.log( myPrQueue2.dequeue());
+      // // myPrQueue2.enqueue(['cyborg', 3])
+      // // myPrQueue2.enqueue(['elephant', 3])
+      // // myPrQueue2.enqueue(['cyborg', 1])
+      // // myPrQueue2.enqueue(['elephant', 32])
+      // myPrQueue2.dequeue();
+      // myPrQueue2.dequeue();
+      // myPrQueue2.dequeue();
+      // myPrQueue2.dequeue();
+      // myPrQueue2.dequeue();
+      // myPrQueue2.dequeue();
+      // myPrQueue2.enqueue(['cyborg', 3])
+      // myPrQueue2.enqueue(['elephant', 3])
+      // myPrQueue2.enqueue(['cyborg', 1])
+      // myPrQueue2.enqueue(['elephant', 32])
+      // // myPrQueue.dequeue();
+      // // myPrQueue.dequeue();
+      // // myPrQueue.dequeue();
+      // // myPrQueue.dequeue();
+      // // myPrQueue.dequeue();
+      // // myPrQueue.dequeue();
+      // // myPrQueue.dequeue(); 
+      // // myPrQueue.enqueue(['cyborg', 3])
+      // // myPrQueue.dequeue();
+
+   </script>
+
+
+</body>
+
+</html>

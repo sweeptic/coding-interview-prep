@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+      function Queue(col) {
+         var collection = [1, 2, 3, 4, 5];
+
+         this.collection = col
+
+         this.print = function () {
+            console.log(collection);
+         };
+
+         this.enqueue = function (item) {
+            collection[collection.length] = item;
+         }
+
+         this.dequeue = function () {
+            return +collection.splice(0, 1)
+         }
+
+
+         this.front = function () {
+            return collection[0]
+         }
+
+
+         this.size = function () {
+            return collection.length
+         }
+
+
+         this.isEmpty = function () {
+            if (!collection.size) return false;
+         }
+      }
+
+      let myQueue = new Queue();
+
+      myQueue.enqueue(99)
+      myQueue.print()
+      console.log(myQueue.dequeue());
+      myQueue.print()
+      console.log(myQueue.front());
+      console.log(myQueue.size());
+
+
+      // console.log(myQueue);
+
+
+
+   </script>
+
+
+</body>
+
+</html>

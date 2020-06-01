@@ -12,19 +12,20 @@
 
    <script>
 
+
       function merger(left, right) {
-         let mergedArr = [];
+         let array = [];
 
          while (left.length && right.length) {
-            left[0] < right[0] ? mergedArr.push(left.shift()) : mergedArr.push(right.shift())
+            left[0] < right[0] ? array.push(left.shift()) : array.push(right.shift())
          }
-
-         return [...mergedArr, ...left, ...right];
+         return ([...array, ...left, ...right])
       }
+
+
 
       function mergeSort(array) {
          if (array.length <= 1) return array;
-
          let middle = Math.floor(array.length / 2);
          let left = mergeSort(array.slice(0, middle));
          let right = mergeSort(array.slice(middle, array.length));
@@ -32,7 +33,46 @@
          return merger(left, right);
       }
 
+
       console.log(mergeSort([6, 5, 3, 1, 8, 7, 2, 4, 11, 56, 77, 654, 3, 1, 22, 3]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /*
+
+            function merger(left, right) {
+               let mergedArr = [];
+
+               while (left.length && right.length) {
+                  left[0] < right[0] ? mergedArr.push(left.shift()) : mergedArr.push(right.shift())
+               }
+
+               return [...mergedArr, ...left, ...right];
+            }
+
+            function mergeSort(array) {
+               if (array.length <= 1) return array;
+
+               let middle = Math.floor(array.length / 2);
+               let left = mergeSort(array.slice(0, middle));
+               let right = mergeSort(array.slice(middle, array.length));
+
+               return merger(left, right);
+            }
+      */
+
+
 
    </script>
 </body>
