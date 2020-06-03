@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+
+      class CircularQueue {
+         constructor(size) {
+
+            this.queue = [];
+            this.read = 0;
+            this.write = 0;
+            this.max = size - 1;
+
+            while (size > 0) {
+               this.queue.push(null);
+               size--;
+            }
+         }
+
+         print() {
+            return this.queue;
+         }
+
+         enqueue(item) {
+
+            console.log('write:' + this.write, 'read:', this.read)
+
+            if (
+               (this.read <= this.write)
+               &&
+               (this.queue[this.write % this.queue.length] === null)
+            ) {
+               let pos = this.write % this.queue.length
+               this.queue[pos] = item;
+               this.write++;
+               return (item)
+            } else {
+               console.warn('null')
+               return null;
+            }
+            // console.log('write:' + this.write, 'read:', this.read)
+
+         }
+
+         dequeue() {
+
+            if (this.read < this.write) {
+               let pickedUp = this.queue[this.read % this.queue.length];
+               this.queue[this.read % this.queue.length] = null;
+
+               this.read++;
+
+
+               console.log(pickedUp);
+               console.log('write:' + this.write, 'read:', this.read)
+               return pickedUp;
+            } else {
+               console.warn('null')
+               return null;
+            }
+
+         }
+      }
+
+
+
+
+      let myCirc = new CircularQueue(5);
+      console.log(myCirc.print())
+      myCirc.enqueue('a');
+      myCirc.enqueue('b');
+      myCirc.enqueue('c');
+      myCirc.dequeue();
+      myCirc.dequeue();
+
+      myCirc.enqueue('d');
+      myCirc.enqueue('e');
+      myCirc.enqueue('f');
+      // myCirc.enqueue('g');
+      // console.log(myCirc.print())
+
+      myCirc.dequeue();
+      myCirc.dequeue();
+      // myCirc.enqueue('a');
+
+      // myCirc.enqueue('d');
+      // myCirc.enqueue('f');
+      myCirc.dequeue();
+      myCirc.enqueue('b');
+      // // myCirc.enqueue('c');
+      // myCirc.dequeue();
+      // // console.log(myCirc.print())
+      myCirc.dequeue();
+      // // console.log(myCirc.print())
+
+      // myCirc.enqueue('e');
+
+      // myCirc.enqueue('g');
+      // myCirc.enqueue('h');
+      // myCirc.enqueue('k');
+      myCirc.dequeue();
+      // myCirc.dequeue();
+      // myCirc.dequeue();
+      // myCirc.dequeue();
+      // myCirc.dequeue();
+      // myCirc.dequeue();
+      // // myCirc.dequeue();
+      // myCirc.enqueue('a');
+      // myCirc.enqueue('b');
+
+
+      console.log(myCirc.print())
+
+
+   </script>
+
+
+</body>
+
+</html>

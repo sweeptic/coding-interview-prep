@@ -12,36 +12,62 @@
 
    <script>
 
-
       function quickSort(array) {
-
-         if (array.length <= 1) return array;
+         if (array.length <= 1) return array
 
          let pivot = array[0];
          let left = [];
          let right = [];
 
          array.map(item => {
-            if (item !== pivot) {
-               item < pivot ? left.push(item) : right.push(item)
-            }
+            if (item === pivot) return;
+            if (item < pivot) { left.push(item) } else { right.push(item) };
          })
-         return quickSort(left).concat(pivot, quickSort(right) )
 
+         return quickSort(left).concat(pivot, quickSort(right))
       }
 
       console.log(
          quickSort([63, 123, 43, 2, 55, 1, 234, 92])
       )
 
+      /*
+        function quickSort(array) {
+
+               if (array.length <= 1) return array;
+               let pivot = array[0];
+               let left = [];
+               let right = [];
+
+               array.map(item => {
+                  if (item !== pivot) {
+                     if (item < pivot) left.push(item);
+                     else right.push(item);
+                  }
+               })
+               return quickSort(left).concat(pivot, quickSort(right))
+            }
+      */
 
 
 
+      /*
+            function quickSort(array) {
 
+               if (array.length <= 1) return array;
 
+               let pivot = array[0];
+               let left = [];
+               let right = [];
 
-
-
+               array.map(item => {
+                  if (item !== pivot) {
+                     item < pivot ? left.push(item) : right.push(item)
+                  }
+               })
+               return quickSort(left).concat(pivot, quickSort(right) )
+            }
+      */
 
 
       // function quickSort(array) {

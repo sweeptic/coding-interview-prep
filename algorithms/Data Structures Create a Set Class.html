@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+
+      class Set {
+         constructor() {
+            // Dictionary will hold the items of our set
+            this.dictionary = {};
+            this.length = 0;
+         }
+
+         // This method will check for the presence of an element and return true or false
+         has(element) {
+            return this.dictionary[element] !== undefined;
+         }
+
+         // This method will return all the values in the set as an array
+         values() {
+            return Object.keys(this.dictionary);
+         }
+
+         // change code below this line
+
+         // write your add method here
+
+         add(item) {
+            if (!this.dictionary[item]) {
+               this.dictionary[item] = item;
+               this.length++;
+               return true;
+            } else {
+               return false;
+            }
+         }
+
+         // write your remove method here
+         remove(item) {
+            let removedItem = this.dictionary[item];
+            this.length--;
+            delete this.dictionary[item];
+            return removedItem;
+         }
+
+         // write your size method here
+
+         size() {
+            return this.length;
+         }
+
+         // change code above this line
+      }
+
+      const set1 = new Set();
+
+      set1.add(1);
+      set1.add(2);
+      set1.add(2);
+      set1.add(4);
+      set1.add(2);
+
+      console.log(set1.remove(1));
+
+      console.log(set1);
+      console.log(set1.values())
+      console.log(set1.size())
+
+
+
+
+      // console.log(set1);
+      // // output: {1, 2, 3, 5, 0}
+      // console.log(set1.has(1));
+      // // output: true
+      // console.log(set1.has(6));
+      // output: false
+
+   </script>
+
+
+</body>
+
+</html>
