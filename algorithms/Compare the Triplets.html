@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+
+      // Complete the aVeryBigSum function below.
+      function aVeryBigSum(ar) {
+         console.log(ar)
+         let sum = 0;
+         ar.map(item => sum = item + sum)
+         console.log(sum)
+         return sum
+      }
+
+
+      const result = aVeryBigSum([51000000001, 1000000002, 1000000003, 1000000004, 1000000005]);
+
+
+   </script>
+
+
+</body>
+
+</html>
