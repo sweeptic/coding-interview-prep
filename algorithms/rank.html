@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+      function countingValleys(n, s) {
+
+         let alt = 0;
+         let valley = 0;
+
+         let array = [...s].map(item => {
+            let prevalt = alt;
+            item === 'U' ? alt++ : alt--;
+            if (prevalt === -1 && alt === 0) {
+               console.log('climbing out');
+               valley++;
+            }
+         })
+
+         console.log(valley)
+         return valley
+
+
+      }
+
+
+      countingValleys(8, "UDDDUDUU")
+
+
+      
+      
+
+
+   </script>
+
+
+</body>
+
+</html>
