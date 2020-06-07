@@ -12,32 +12,36 @@
 
    <script>
 
-      function countingValleys(n, s) {
 
-         let alt = 0;
-         let valley = 0;
 
-         let array = [...s].map(item => {
-            let prevalt = alt;
-            item === 'U' ? alt++ : alt--;
-            if (prevalt === -1 && alt === 0) {
-               console.log('climbing out');
-               valley++;
+
+      function jumpingOnClouds(c) {
+         const array = Object.assign([], c)
+         let jump = 0
+
+         for (let index = 0; index <= array.length;) {
+
+            const next1 = array[index + 1];
+            const next2 = array[index + 2];
+
+            if (index === array.length - 1) break;
+
+            if (next1) {
+               index = index + 2; jump++;
             }
-         })
+            else if (next2 || (!next1 && next2 === undefined)) {
+               index = index + 1;
+               jump++;
+            }
+            else if (!next2 && !next1) {
+               index = index + 2; jump++;
+            }
+         }
 
-         console.log(valley)
-         return valley
-
-
+         return jump;
       }
 
-
-      countingValleys(8, "UDDDUDUU")
-
-
-      
-      
+      jumpingOnClouds([0, 0, 1, 0, 0, 1, 0])
 
 
    </script>
