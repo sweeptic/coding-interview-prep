@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+
+
+      var Map = function () {
+         this.collection = {};
+         // change code below this line
+         // change code above this line
+
+         this.add = function (key, value) {
+            this.collection[key] = value;
+         }
+
+         this.remove = function (key) {
+            delete this.collection[key];
+         }
+
+         this.get = function (key) {
+            return this.collection[key];
+         }
+
+         this.has = function (key) {
+            return this.collection.hasOwnProperty(key);
+         }
+
+         this.values = function () {
+            return Object.values(this.collection);
+         }
+
+         this.size = function () {
+            return this.values().length;
+         }
+
+         this.clear = () => {
+            for (let item of Object.keys(this.collection)) {
+               delete this.collection[item];
+            }
+         }
+      }
+
+      let myMap = new Map();
+
+      myMap.add('a', 1);
+      myMap.add('b', 2);
+      myMap.add('c', 5);
+
+      console.log(myMap.values())
+      // console.log(myMap.values())
+      // console.log(myMap.get('a'))
+      myMap.clear()
+      console.log(myMap)
+      console.log(myMap.size())
+
+
+
+
+
+
+   </script>
+
+
+</body>
+
+</html>
