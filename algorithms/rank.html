@@ -13,35 +13,28 @@
    <script>
 
 
+      // Complete the repeatedString function below.
+      function repeatedString(s, n) {
 
+         let sum = [...s].filter(item => item === 'a').length;
 
-      function jumpingOnClouds(c) {
-         const array = Object.assign([], c)
-         let jump = 0
+         // console.log(
+         //    Math.floor(n / s.length) * sum
+         // )
 
-         for (let index = 0; index <= array.length;) {
+         console.log(
+            Math.floor(n / s.length) * sum +
+            [...s].splice(0, n % s.length).filter(item => item === 'a').length
+         )
 
-            const next1 = array[index + 1];
-            const next2 = array[index + 2];
-
-            if (index === array.length - 1) break;
-
-            if (next1) {
-               index = index + 2; jump++;
-            }
-            else if (next2 || (!next1 && next2 === undefined)) {
-               index = index + 1;
-               jump++;
-            }
-            else if (!next2 && !next1) {
-               index = index + 2; jump++;
-            }
-         }
-
-         return jump;
+         return Math.floor(n / s.length) * sum +
+            [...s].splice(0, n % s.length).filter(item => item === 'a').length
       }
 
-      jumpingOnClouds([0, 0, 1, 0, 0, 1, 0])
+
+      repeatedString('a', 1000000000000)
+      //aba  7 abaabaa   7db a
+      //a 100000000 aaaaaa.. 100000000 db a
 
 
    </script>
