@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+      function LinkedList() {
+         var length = 0;
+         var head = null;
+
+         var Node = function (element) {
+            this.element = element;
+            this.next = null;
+         };
+
+         this.size = function () {
+            return length;
+         };
+
+         this.head = function () {
+            return head;
+         };
+
+         this.add = function (element) {
+            var node = new Node(element);
+            if (head === null) {
+               head = node;
+            } else {
+               var currentNode = head;
+
+               while (currentNode.next) {
+                  currentNode = currentNode.next;
+               }
+               currentNode.next = node;
+            }
+            length++;
+         };
+
+         this.remove = function (element) {
+
+            console.log(this)
+
+            let current = head;
+            let previous = current;
+
+            //lista
+            // var currentNodeList = head;
+            // while (currentNodeList.next) {
+            //    console.log('list:', currentNodeList.element)
+            //    currentNodeList = currentNodeList.next;
+            // }
+            // console.log('list:', currentNodeList.element)
+
+
+            if (head.element === element) {
+               console.log('elso');
+               head = head.next;
+               length--;
+               return;
+            }
+
+            while (current.next !== null) {
+               
+               if (current.element === element) {
+                  console.log('kozepso vagy utolso')
+                  previous.next = current.next
+                  length--;
+                  return;
+               }
+               previous = current;
+               current = current.next;
+            }
+
+            if(current.element === element) {
+               console.log('utolso');
+               previous.next = null;
+               length--;
+            }
+         };
+
+
+
+      }
+
+      let myLinkedList = new LinkedList();
+
+      myLinkedList.add('alma')
+      myLinkedList.add('korte')
+      myLinkedList.add('banan')
+      myLinkedList.add('citrom')
+
+      // myLinkedList.remove('alma')
+      myLinkedList.remove('citrom')
+
+
+      myLinkedList.remove('list')
+
+
+   </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+      var called = 0;
+      var hash = string => {
+         called++;
+         var hashed = 0;
+         for (var i = 0; i < string.length; i++) {
+            hashed += string.charCodeAt(i);
+         }
+         return hashed;
+      };
+
+
+      var HashTable = function () {
+         this.collection = {};
+         let index = 0
+
+         this.add = function (key, value) {
+            let theHash = hash(key);
+            if (!this.collection.hasOwnProperty(theHash)) {
+               this.collection[theHash] = {};
+            }
+            this.collection[theHash][key] = value
+         }
+
+
+         this.remove = function (key) {
+            let theHash = hash(key);
+            let hashedObj = this.collection[theHash];
+
+            if (hashedObj.hasOwnProperty(key)) {
+               delete hashedObj[key];
+            }
+
+            if (!Object.keys(hashedObj).length) {
+               delete this.collection[theHash];
+            }
+         }
+
+
+         this.lookup = function (key) {
+            let theHash = hash(key);
+            if (this.collection.hasOwnProperty(theHash)) {
+               return this.collection[theHash][key];
+            }
+            return null;
+         }
+
+      };
+
+
+
+      let myHash = new HashTable();
+
+      myHash.add(1, 'a')
+      myHash.add(2, 'b')
+      myHash.add(2, 'c')
+      myHash.add(3, 'c')
+      myHash.add(4, 'c')
+
+      myHash.add('a', 1)
+      myHash.add('b', 2)
+      myHash.add('c', 3)
+      console.log(myHash.collection)
+
+      // myHash.remove('b')
+      // console.log(myHash.lookup('03'));
+
+      myHash.remove('a')
+      myHash.remove(1)
+
+      console.log(myHash.collection)
+   </script>
+
+
+</body>
+
+</html>
