@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+      function LinkedList() {
+         var length = 0;
+         var head = null;
+
+         var Node = function (element) { // {1}
+            this.element = element;
+            this.next = null;
+         };
+
+         this.size = function () {
+            return length;
+         };
+
+         this.head = function () {
+            return head;
+         };
+
+         this.add = function (element) {
+            var node = new Node(element);
+            if (head === null) {
+               head = node;
+            } else {
+               var currentNode = head;
+
+               while (currentNode.next) {
+                  currentNode = currentNode.next;
+               }
+
+               currentNode.next = node;
+            }
+
+            length++;
+         };
+
+         this.remove = function (element) {
+            var currentNode = head;
+            var previousNode;
+            if (currentNode.element === element) {
+               head = currentNode.next;
+            } else {
+               while (currentNode.element !== element) {
+                  previousNode = currentNode;
+                  currentNode = currentNode.next;
+               }
+
+               previousNode.next = currentNode.next;
+            }
+
+            length--;
+         };
+
+         this.isEmpty = function () {
+            if (head === null) { return true } else { return false }
+         }
+
+         this.indexOf = function (element) {
+            let current = head;
+            let index = 0;
+            let foundIndex = -1
+
+            while (current !== null) {
+               if (current.element === element) { foundIndex = index; }
+               index++;
+               current = current.next;
+            }
+            return foundIndex;
+         }
+
+
+         this.elementAt = function (element) {
+            let current = head;
+            let elementArray = [];
+
+            while (current !== null) {
+               elementArray.push(current.element)
+               current = current.next;
+            }
+            console.log(elementArray)
+            return elementArray[element]         
+         }
+
+
+      }
+
+      let myLinkedList = new LinkedList();
+      myLinkedList.add('a')
+      myLinkedList.add('b')
+      myLinkedList.add('c')
+      myLinkedList.add('d')
+      console.log(myLinkedList)
+
+      console.log(myLinkedList.indexOf('r'));
+
+      console.log(myLinkedList.elementAt('2'));
+
+
+
+
+   </script>
+
+
+</body>
+
+</html>

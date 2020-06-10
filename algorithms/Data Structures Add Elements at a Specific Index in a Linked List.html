@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+
+
+
+      function LinkedList() {
+         var length = 0;
+         var head = null;
+
+         var Node = function (element) {
+            this.element = element;
+            this.next = null;
+         };
+
+         this.size = function () {
+            return length;
+         };
+
+         this.head = function () {
+            return head;
+         };
+
+         this.add = function (element) {
+            var node = new Node(element);
+            if (head === null) {
+               head = node;
+            } else {
+               var currentNode = head;
+
+               while (currentNode.next) {
+                  currentNode = currentNode.next;
+               }
+
+               currentNode.next = node;
+            }
+            length++;
+         };
+
+
+
+
+
+         this.addAt = function (elementIndex, item) {
+
+            let previous = head;
+            let current = head;
+            
+            let index = 0;
+
+            if (elementIndex < 0 || elementIndex >= length) {
+               console.log('out of index');
+               return false;
+            }
+
+
+            while (current !== null) {
+
+               if (index === elementIndex) {
+
+                  let newNode = new Node(item);
+
+                  if (index === 0) {
+                     console.log('first element');
+                     
+                     let z = head;
+                     head = newNode;                     
+                     head.next = z;
+                     // break;
+                  } else {
+                     console.log('other element', current.element, index);
+                     previous.next = newNode;
+                     newNode.next = current;
+                     // break;
+                  }
+                  length++
+               }
+
+               previous = current;
+               current = current.next;
+               index++;
+            }
+
+            let helper = head;
+            while (helper !== null) {
+               console.log(helper)
+               helper = helper.next;
+            }
+
+         };
+
+
+
+
+         
+      }
+
+
+      let myLinkedList = new LinkedList();
+      myLinkedList.add('a')
+      myLinkedList.add('b')
+      myLinkedList.add('c')
+      myLinkedList.add('d')
+      // console.log(myLinkedList)
+      // myLinkedList.add('d')
+
+      console.log(myLinkedList.addAt(3, 'x'))
+
+      /*
+             this.removeAt = function (element) {
+
+                       let previous = head;
+                       let current = head;
+                       let helper = head;
+                       let index = 0;
+
+                       if (element < 0 || element > length) return null;
+
+
+                       while (current !== null) {
+                          if (index === element) {
+
+                             if (index === 0) {
+                                console.log('first element')
+                                let returnedElement = head;
+                                head = null;
+                                length--;
+                                return returnedElement.element
+                             }
+
+
+                             console.log(current.element, index)
+                             previous.next = current.next;
+                             length--;
+                             return current.element;
+                          }
+                          previous = current;
+                          current = current.next;
+                          index++;
+                       }
+
+
+                       while (helper !== null) {
+                          console.log(helper)
+                          helper = helper.next;
+                       }
+
+
+
+                    };
+                    */
+
+
+   </script>
+
+
+</body>
+
+</html>
