@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+      var displayTree = tree => console.log(JSON.stringify(tree, null, 2));
+      function Node(value) {
+         this.value = value;
+         this.left = null;
+         this.right = null;
+      }
+
+      function BinarySearchTree() {
+         this.root = null;
+
+         this.rec = function (item, tree) {
+
+            if (item.value === tree.value) {
+               return null;
+            }
+
+            if (item.value < tree.value) {
+               if (tree.left === null) {
+                  console.log('left: insert here: ', item)
+                  tree.left = item
+               } else {
+                  this.rec(item, tree.left)
+                  return undefined
+               }
+            }
+
+            if (item.value > tree.value) {
+               if (tree.right === null) {
+                  console.log('right: insert here: ', item)
+                  tree.right = item
+               } else {
+                  this.rec(item, tree.right)
+                  return undefined
+               }
+            }
+         }
+
+
+         this.add = function (item) {
+            const newNode = new Node(item);
+            let tree = this.root;
+
+            if (this.root === null) {
+               this.root = newNode;
+               return undefined;
+            } else {
+               return this.rec(newNode, tree);
+            }
+         }
+
+      }
+
+      let myTree = new BinarySearchTree();
+      console.log(myTree.add(8))
+      console.log(myTree.add(8))
+      // myTree.add(12)
+      // myTree.add(1)
+      // myTree.add(16)
+      // console.log(myTree.add(100));
+      // console.log(myTree.add(100));
+      // console.log(myTree.add(100));
+
+      // console.log(myTree)
+      displayTree(myTree)
+
+
+
+   </script>
+
+
+</body>
+
+</html>
