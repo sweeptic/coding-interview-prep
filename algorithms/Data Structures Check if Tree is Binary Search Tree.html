@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+
+      var displayTree = tree => console.log(JSON.stringify(tree, null, 2));
+
+
+      function Node(value) {
+         this.value = value;
+         this.left = null;
+         this.right = null;
+      }
+
+
+      function BinarySearchTree() {
+         this.root = null;
+         this.rec = function (item, tree) {
+            if (item.value === tree.value) {
+               return null;
+            }
+            if (item.value < tree.value) {
+               if (tree.left === null) {
+                  // console.log('left: insert here: ', item)
+                  tree.left = item
+               } else {
+                  this.rec(item, tree.left)
+                  return undefined
+               }
+            }
+            if (item.value > tree.value) {
+               if (tree.right === null) {
+                  // console.log('right: insert here: ', item)
+                  tree.right = item
+               } else {
+                  this.rec(item, tree.right)
+                  return undefined
+               }
+            }
+         }
+         this.add = function (item) {
+            const newNode = new Node(item);
+            let tree = this.root;
+            if (this.root === null) {
+               this.root = newNode;
+               return undefined;
+            } else {
+               return this.rec(newNode, tree);
+            }
+         }
+      }
+
+
+
+      isBinarySearchTree = function (tree) {
+         if (tree.root == null)
+            return null;
+         let isTree = true;
+         console.log(this)
+         treeRec = function (node) {
+            console.log(this)
+            if (node.left != null) {
+               const left = node.left
+               if (node.value < left.value) {
+                  isTree = false
+               } else {
+                  treedRec(left);
+               }
+            }
+            if (node.right != null) {
+               const right = node.right
+               if (node.value > right.value) {
+                  isTree = false
+               } else {
+                  treeRec(right);
+               }
+            }
+         }
+         this.treeRec(tree.root);
+         // console.log(isTree)
+         return isTree;
+      }
+
+
+      let myTree = new BinarySearchTree();
+
+      myTree.add(8)
+      myTree.add(8)
+      myTree.add(8)
+
+      console.log(this.isBinarySearchTree(myTree))
+
+      console.log(
+         isBinarySearchTree(myTree)
+      )
+
+
+   </script>
+
+
+</body>
+
+</html>
