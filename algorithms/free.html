@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+      function checkScope() {
+
+
+         'use strict';
+
+
+         let i = 'function scope';
+
+
+         if (true) {
+            let i = 'block scope';
+            console.log('Block scope i is: ', i);
+         }
+
+
+         console.log('Function scope i is: ', i);
+         return i;
+
+
+      }
+
+      checkScope()
+
+
+   </script>
+
+
+</body>
+
+</html>

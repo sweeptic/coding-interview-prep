@@ -24,6 +24,7 @@
 
 
       function BinarySearchTree() {
+         // console.log(this)
          this.root = null;
          this.rec = function (item, tree) {
             if (item.value === tree.value) {
@@ -62,19 +63,20 @@
 
 
 
-      isBinarySearchTree = function (tree) {
+      function isBinarySearchTree (tree) {
          if (tree.root == null)
             return null;
          let isTree = true;
-         console.log(this)
-         treeRec = function (node) {
-            console.log(this)
+         // console.log(this)
+         // this.treeRec = function (node) {
+            function treeRec(node) {
+            // console.log(this)
             if (node.left != null) {
                const left = node.left
                if (node.value < left.value) {
                   isTree = false
                } else {
-                  treedRec(left);
+                  treeRec(left);
                }
             }
             if (node.right != null) {
@@ -86,7 +88,7 @@
                }
             }
          }
-         this.treeRec(tree.root);
+         treeRec(tree.root);
          // console.log(isTree)
          return isTree;
       }
@@ -94,15 +96,39 @@
 
       let myTree = new BinarySearchTree();
 
+      // BinarySearchTree()
+
+      // BinarySearchTree.add(8);
+      // console.log(myTree)
+
+
       myTree.add(8)
       myTree.add(8)
       myTree.add(8)
+
+
 
       console.log(this.isBinarySearchTree(myTree))
+      console.log(window.isBinarySearchTree(myTree))
+      console.log(this)
 
-      console.log(
-         isBinarySearchTree(myTree)
-      )
+
+
+      function myFunction() {
+         console.log("Something")
+         // this.somethingElse = event => console.log("Something else")
+         this.aomethingElse = function () { console.log("Something else") }
+      }
+
+      // myFunction.somethingElse()
+
+      // let r = new myFunction()
+      // r.somethingElse()
+      // console.log(this)
+      // window.myFunction();
+      // console.log(this)
+      // aomethingElse();
+
 
 
    </script>
