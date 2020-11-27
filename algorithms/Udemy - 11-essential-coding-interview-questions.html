@@ -14,6 +14,48 @@
 
 
 
+
+      //**************01 Introduction and Problem Solving Tips***********
+
+      //find three integers that multiply to 20
+      function multiply_3x(array, num) {
+         const result = []
+         array.map((item, index) => {
+            let sliced = array.slice(index + 1)
+            let res = multiply(sliced, num / item);
+            if (res) result.push([...res, item])
+         })
+         return result
+      }
+
+
+      //find two integers that multiply to 20
+      function multiply(array, num) {
+         // console.log(array, num);
+
+         const obj = {}
+         let res = []
+
+         array.map(item => {
+            let div = num / item
+
+            if (obj[div]) {
+               res.push(obj[div], item);
+            }
+
+            obj[item] = item
+         })
+         if (res.length) return res
+      }
+
+
+      const array = [2, 4, 1, 6, 5, 40, -1, 2]
+      console.log(multiply(array, 20));
+      console.log(multiply_3x(array, 20));
+
+
+
+
    </script>
 
 
