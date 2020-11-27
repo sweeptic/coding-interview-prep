@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+   <button>button</button>
+
+   <script>
+      /*
+            //FUNCTION
+            window.someFunction = function() { console.log(this) }
+            const button = document.querySelector('button');
+            button.addEventListener('click', window.someFunction);
+            console.log(button)
+            console.log(this)
+      */
+
+      /*
+      //CLASS SYNTAX
+            class MyClass {
+               constructor() {
+                  console.log(this);
+                  const button = document.querySelector('button');
+                  button.addEventListener('click', this.myMethod);
+               }
+               myMethod() { console.log(this) }
+            }
+            let myClass = new MyClass();
+      */
+
+      /*
+            function NameField(param){
+               let liItem = document.createElement('li');
+               liItem.innerHtml = param;
+               document.body.appendChild(n);
+            }
+      
+            class NameGenerator {
+               constructor() {
+                  const btn = document.querySelector('button')
+                  this.names = ['Max', 'Manu', 'Anna']
+                  this.currentName = 0;
+                  console.log(this);            //NameGenerator
+                  btn.addEventListener('click', this.addName.bind(this));
+              //  btn.addEventListener('click', this.addName);
+               }
+      
+               addName() {
+                  console.log(this)
+                  // const name = new NameField(this.names[this.currentName])
+                  // this.currentName++
+                  // if (this.currentName >= this.names.length) {
+                  //    this.currentName = 0
+                  // }
+                  console.log('run')
+               }
+            }
+            let mycl = new NameGenerator();
+      */
+
+
+      function Container(param) {
+
+         this.service = function() {
+            console.log(that)
+            return secret
+         }
+        
+         var secret = 3;
+         var that = this;
+      }
+
+      let z = new Container()
+
+      console.log(z.secret)
+      console.log(z.service())
+
+   </script>
+
+
+</body>
+
+</html>

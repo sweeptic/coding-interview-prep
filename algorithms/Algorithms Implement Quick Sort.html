@@ -13,38 +13,6 @@
    <script>
 
 
-      function quickSort(array) {
-
-         if (array.length <= 1) return array;
-
-         let pivot = array[0];
-         let left = [];
-         let right = [];
-
-         array.map(item => {
-            if (item !== pivot) {
-               item < pivot ? left.push(item) : right.push(item);
-            }
-         })
-
-         console.log(left, pivot, right)
-         return quickSort(left).concat(pivot, quickSort(right))
-      }
-
-
-
-
-      console.log(
-         quickSort([63, 123, 43, 2, 55, 1, 234, 92])
-      )
-
-
-
-
-
-
-
-
 
 
 
@@ -52,8 +20,92 @@
 
 
       /*
+            function quickSort(array) {
+               if (array.length <= 1) return array
+               const pivot = array[0]
+               let left = []
+               let right = []
+               array.map(item => {
+                  if (item !== pivot)
+                     item < pivot ? left.push(item) : right.push(item)
+               })
+               console.log(left, right);
+               return quickSort(left).concat(pivot, quickSort(right))
+            }
+      
+            function merger(left, right) {
+               let sorted = [];
+               while (left.length && right.length) {
+                  left[0] < right[0] ? sorted.push(left.shift()) : sorted.push(right.shift())
+               }
+               return [...sorted, ...left, ...right]
+            }
+            function mergesort(array) {
+               if (array.length <= 1) return array
+               const middle = array.length / 2;
+               const left = array.slice(0, middle)
+               const right = array.slice(middle)
+               let l = mergesort(left)
+               let r = mergesort(right)
+               return merger(l, r)
+            }
+      */
 
 
+
+
+      // console.log(quickSort([63, 123, 43, 2, 55, 1, 234, 92]));
+      // console.log(mergesort([241, 3, 5, 733, 2, 1]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+         // function quickSort(array) {
+
+         //    if (array.length <= 1) return array;
+
+         //    let pivot = array[0];
+         //    let left = [];
+         //    let right = [];
+
+         //    array.map(item => {
+         //       if (item !== pivot) {
+         //          item < pivot ? left.push(item) : right.push(item);
+         //       }
+         //    })
+
+         //    console.log(left, pivot, right)
+         //    return quickSort(left).concat(pivot, quickSort(right))
+         // }
+
+
+
+      /*
+      43,2,55,1    63      123, 234, 92
+
+      2,1          43      55
+      1            2       x
+
+      92           123     234
+
+
+
+      1,2,43,55, 92, 123, 234
+      */
+
+
+
+
+      /*
 
           function quickSort(array) {
 

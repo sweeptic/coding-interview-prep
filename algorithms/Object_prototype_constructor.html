@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+
+
+   <script>
+
+      function Parent() { /*console.log('from parent')*/ }
+      Parent.prototype.parentMethod = function parentMethod() { }
+
+      function Child() {
+         // console.log('hello');
+         // Parent.call(this) // Make sure everything is initialized properly
+      }
+
+
+
+      // let child = new Child();
+      Child.prototype = Object.create(Parent.prototype);
+      Child.prototype.constructor = Child;
+
+      let child = new Child();
+      console.log(child);
+
+
+
+
+   </script>
+
+
+</body>
+
+</html>

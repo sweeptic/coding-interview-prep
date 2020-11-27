@@ -13,31 +13,88 @@
    <script>
 
 
-      function merger(left, right) {
-         let array = [];
-         while (left.length && right.length) {
-            left[0] < right[0] ? array.push(left.shift()) :
-               array.push(right.shift())
+
+
+
+
+
+      //007 Most Frequently Occurring Item in an Array (Solution)
+      const array = [1, 2, 2, 4, 5, 1, 6, 6, 8, 1, 8, 1]
+      const obj = {}
+      let max = 0;
+      for (let index = 0; index < array.length; index++) {
+         const value = obj[array[index]];
+         if (value) {
+            obj[array[index]] = value + 1;
+            if (value > max) max = obj[array[index]]
+         } else {
+            obj[array[index]] = 1
          }
-         return [...array, ...left, ...right]
       }
+      // console.log(obj);
+      // console.log(max);
 
 
 
-      function mergeSort(array) {
-         if (array.length <= 1) return array;
-         let middle = Math.max(array.length / 2)
-         let left = mergeSort(array.slice(0, middle));
-         let right = mergeSort(array.slice(middle));
-         return merger(left, right)
-      }
+      // function merger(left, right) {
+      //    const array = [];
+      //    while (left.length && right.length) {
+      //       left[0] < right[0] ? array.push(left.shift()) : array.push(right.shift())
+      //    }
+      //    return [...array, ...left, ...right]
+      // }
+
+
+      // function mergesort(array) {
+      //    if (array.length <= 1) {
+      //       // console.log('returned array:', array);
+      //       return array
+      //    }
+      //    const middle = array.length / 2;
+      //    const left = mergesort(array.slice(0, middle))
+      //    const right = mergesort(array.slice(middle))
+      //    // console.log('returned:', left, right);
+      //    return merger(left, right)
+
+      // }
+
+      // console.log(mergesort([241, 3, 5, 733, 2, 1]));
 
 
 
 
 
+      // function merger(left, right) {
+      //    let array = [];
+      //    while (left.length && right.length) {
+      //       left[0] < right[0] ? array.push(left.shift()) :
+      //          array.push(right.shift())
+      //    }
+      //    // console.log([...array, ...left, ...right]);
 
-      console.log(mergeSort([241, 3, 5, 733, 2, 1]));
+      //    return [...array, ...left, ...right]
+      // }
+
+
+
+      // function mergeSort(array) {
+      //    // console.log(array);
+
+      //    if (array.length <= 1) return array;
+      //    let middle = Math.max(array.length / 2)
+      //    let left = mergeSort(array.slice(0, middle));
+      //    let right = mergeSort(array.slice(middle));
+      //    console.log('call merger with', left, right)
+      //    return merger(left, right)
+      // }
+
+
+
+
+
+      // console.log([241, 3, 5, 733, 2, 1]);
+
+      // console.log(mergeSort([241, 3, 5, 733, 2, 1]));
 
       /*
       241, 3, 5, 733, 2, 1             03
