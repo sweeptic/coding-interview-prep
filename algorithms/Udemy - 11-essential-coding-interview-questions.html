@@ -7,7 +7,7 @@
    <title>Document</title>
 </head>
 
-<body style="background-color: black;">
+<body style="background-color: rgb(34, 34, 34);">
 
 
    <script>
@@ -16,6 +16,120 @@
 
 
       //**************01 Introduction and Problem Solving Tips***********
+
+
+
+      // 008 Common Elements in Two Sorted Arrays (Difficulty = __)
+
+
+      const array_A = [1, 3, 4, 6, 7, 9, 11, 12, 15, 20]
+      const array_B = [1, 2, 4, 5, 9, 10, 11, 12, 20]
+      function commonE_(left, right) {
+         // const obj = {}
+         let p1 = 0
+         let p2 = 0
+         const res = []
+         while (p1 < left.length && p2 < right.length) {
+            if (left[p1] == right[p2]) {
+               res.push(left[p1])
+               p1++
+               p2++
+            } else {
+               if (left[p1] > right[p2]) {
+                  p2++
+               } else {
+                  p1++
+               }
+            }
+         }
+
+         console.log(res);
+         // console.log(obj);
+         console.log('done');
+      }
+      commonE_(array_A, array_B)
+
+
+
+      // my solution
+      // const array_A = [1, 3, 4, 6, 7, 9, 11, 12, 5]
+      // const array_B = [1, 2, 4, 5, 9, 10, 12, 11, 6]
+      function commonE(left, right) {
+         const obj = {}
+         const res = []
+         while (left.length && right.length) {
+            const a = left.shift()
+            const b = right.shift()
+            if (a === b) {
+               res.push(a)
+            } else {
+               if (!obj[a]) { obj[a] = 1 } else { obj[a]++ }
+               if (!obj[b]) { obj[b] = 1 } else { obj[b]++ }
+               if (obj[a] === 2) res.push(a)
+               if (obj[b] === 2) res.push(b)
+            }
+         }
+         console.log(res);
+         console.log(obj);
+         console.log('done');
+      }
+      // commonE(array_A, array_B)
+
+
+      // 006 Most Frequently Occurring Item in an Array (Difficulty = _)
+
+
+      // solution with for 
+      // const array = [1, 3, 1, 3, 2, 1, 1, 1, 7, 7, 7, 7, 7, 7, 7, 4, 3, 2, 2, 22, 2, 2, 2, 2, 2]
+      // const obj = {}
+      // let max = 0;
+      // let maxItem
+      /*
+       for (let index = 0; index < array.length; index++) {
+ 
+          if (obj[array[index]]) {
+             obj[array[index]] = obj[array[index]] + 1;
+          } else {
+             obj[array[index]] = 1
+          }
+          if (obj[array[index]] > max) {
+             max = obj[array[index]]
+             maxItem = array[index]
+          }
+       }
+       */
+      // console.log(obj);
+      // console.log(maxItem, max);
+
+
+
+      //solution with map
+      // const freqArray = [1, 3, 1, 3, 2, 1]
+      function exercise_1(array) {
+         const obj = {};
+         let maxValue = -1;
+         let maxKey
+         array.map(key => {
+            if (!obj[key]) {
+               obj[key] = 1
+            } else {
+               obj[key]++
+            }
+            if (maxValue < obj[key]) {
+               maxValue = obj[key]
+               maxKey = key
+            }
+         })
+         console.log(obj);
+         console.log(maxKey, maxValue);
+      }
+      // console.log(exercise_1(freqArray));
+
+
+
+
+
+
 
       //find three integers that multiply to 20
       function multiply_3x(array, num) {
@@ -49,11 +163,45 @@
       }
 
 
-      const array = [2, 4, 1, 6, 5, 40, -1, 2]
-      console.log(multiply(array, 20));
-      console.log(multiply_3x(array, 20));
+      // const array = [2, 4, 1, 6, 5, 40, -1, 2]
+      // console.log(multiply(array, 20));
+      // console.log(multiply_3x(array, 20));
+      // console.log(quicksort(array));
+      // console.log(mergesort(array));
 
 
+
+
+
+
+      //merge sort
+      function merger(left, right) {
+         const array = []
+         while (left.length && right.length) {
+            left[0] < right[0] ? array.push(left.shift()) : array.push(right.shift())
+         }
+         return [...array, ...left, ...right]
+      }
+
+      function mergesort(array) {
+         if (array.length <= 1) return array;
+         const middle = array.length / 2;
+         const left = mergesort(array.slice(0, middle));
+         const right = mergesort(array.slice(middle));
+         return merger(left, right)
+      }
+
+
+
+      //quick sort
+      function quicksort(array) {
+         if (array.length <= 1) return array;
+         const pivot = array.shift()
+         let left = []
+         let right = []
+         array.map(item => item < pivot ? left.push(item) : right.push(item))
+         return [...quicksort(left), pivot, ...quicksort(right)]
+      }
 
 
    </script>
