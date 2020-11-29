@@ -12,12 +12,36 @@
 
    <script>
 
+      // 012 Non-Repeating Character (Difficulty = __)
 
+      function non_repeating(str) {
+         const obj = {}
+         let pointer = null
+         str.split('').map(item => {
+            obj[item] = obj[item] ? obj[item] + 1 : obj[item] = 1;
+         });
+
+         for (const iterator in obj) {
+            if (obj[iterator] === 1) {
+               pointer = iterator
+               break;
+            }
+         }
+
+         console.log(obj);
+         console.log(pointer);
+
+
+      }
+
+      non_repeating('aabcb')  //c
+      // non_repeating('xxyz')   //y
+      // non_repeating('aabb')   //null
 
 
       //**************01 Introduction and Problem Solving Tips***********
-      const array_A = [1, 2, 3, 4, 5, 6, 7]
-      const array_B = [3, 4, 5, 6, 7, 1, 2]
+      // const array_A = [1, 2, 3, 4, 5, 6, 7]
+      // const array_B = [3, 4, 5, 6, 7, 1, 2]
 
       // 010 Is One Array a Rotation of Another_ (Difficulty = __)
       function function_rot(a, b) {
@@ -27,12 +51,9 @@
          array_A.map(item => rotated = obj_b[item] !== undefined && rotated)
          console.log(rotated);
       }
-      function_rot(array_A, array_B)
+      // function_rot(array_A, array_B)
 
-      console.log(5 % 7);
-
-
-
+      // console.log(5 % 7);
 
 
       // 008 Common Elements in Two Sorted Arrays (Difficulty = __)
