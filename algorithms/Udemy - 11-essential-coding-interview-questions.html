@@ -16,14 +16,30 @@
 
 
       //**************01 Introduction and Problem Solving Tips***********
+      const array_A = [1, 2, 3, 4, 5, 6, 7]
+      const array_B = [3, 4, 5, 6, 7, 1, 2]
+
+      // 010 Is One Array a Rotation of Another_ (Difficulty = __)
+      function function_rot(a, b) {
+         obj_b = {}
+         let rotated = true
+         array_B.map(item => obj_b[item] = item)
+         array_A.map(item => rotated = obj_b[item] !== undefined && rotated)
+         console.log(rotated);
+      }
+      function_rot(array_A, array_B)
+
+      console.log(5 % 7);
+
+
 
 
 
       // 008 Common Elements in Two Sorted Arrays (Difficulty = __)
 
 
-      const array_A = [1, 3, 4, 6, 7, 9, 11, 12, 15, 20]
-      const array_B = [1, 2, 4, 5, 9, 10, 11, 12, 20]
+      // const array_A = [1, 3, 4, 6, 7, 9, 11, 12, 15, 20]
+      // const array_B = [1, 2, 4, 5, 9, 10, 11, 12, 20]
       function commonE_(left, right) {
          // const obj = {}
          let p1 = 0
@@ -43,11 +59,11 @@
             }
          }
 
-         console.log(res);
+         // console.log(res);
          // console.log(obj);
-         console.log('done');
+         // console.log('done');
       }
-      commonE_(array_A, array_B)
+      // commonE_(array_A, array_B)
 
 
 
