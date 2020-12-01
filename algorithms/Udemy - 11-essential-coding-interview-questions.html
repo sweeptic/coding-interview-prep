@@ -12,34 +12,96 @@
 
    <script>
 
+      // 017 Assign Numbers in Minesweeper (Difficulty = __)
+      function Minesweeper(bombs, rows, cols) {
+         const array = [[]];
+
+         //init
+         for (let index_x = 0; index_x < rows; index_x++) {
+            array[index_x] = []
+            for (let index_y = 0; index_y < cols; index_y++) {
+               array[index_x][index_y] = 0
+            }
+         }
+
+         let index = 0
+         while (bombs.length !== 0 && index <= bombs.length) {
+            let x = bombs[0][0]
+            let y = bombs[0][1]
+
+            //set bomb
+            array[x][y] = -1
+
+            //right mark
+            if (y !== rows) array[x][y + 1]++;
+
+            //left mark
+            if (y !== 0 && array[x][y - 1] !== -1) array[x][y - 1]++;
+
+
+            //mark belove
+            if (y !== rows && array[x + 1]) {
+
+               if (array[x + 1][y] !== -1)
+                  array[x + 1][y]++;
+
+               if (y !== 0) {
+                  array[x + 1][y - 1]++
+               }
+               if (y !== rows) {
+                  array[x + 1][y + 1]++
+               }
+            }
+
+
+            //mark above
+            if (y !== rows && array[x - 1]) {
+
+               if (array[x - 1][y] !== -1)
+                  array[x - 1][y]++
+
+               if (y !== 0) {
+                  array[x - 1][y - 1]++
+               }
+               if (y !== rows) {
+                  array[x - 1][y + 1]++
+               }
+            }
+
+
+            bombs.shift()
+         }
+
+
+         console.log(array);
+
+
+      }
+
+      Minesweeper([[5, 5], [6, 5]], 10, 10)
+
+
 
       // 014 One Away Strings (Difficulty = ___)
-
       //deleting adding changing
-
       function oneway(a, b) {
          if (Math.abs(a.length - b.length) > 1) return false
          let res = true;
          const obj = {}
-
          a.split('').map(item => obj[item] = item)
-
          b.split('').map(item => {
             if (obj[item]) { delete obj[item] } else { obj[item] = item }
          })
-
          console.log(obj);
-
          //change one
          if (Object.keys(obj).length > 2) return false
-
          return res
       }
 
-      const array_a = 'xyz'
-      const array_b = 'xyaz'
+      // const array_a = 'xyz'
+      // const array_b = 'xyaz'
 
-      console.log(oneway(array_a, array_b))
+      // console.log(oneway(array_a, array_b))
 
 
       // 012 Non-Repeating Character (Difficulty = __)
