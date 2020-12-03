@@ -12,9 +12,51 @@
 
    <script>
 
+      // 023 Rotating 2D Array (inplace / Out-of-Place Solution)
+
+      function rotating_inplace(array, n) {
+         for (let x = 0; x < n; x++) {
+            for (let y = n - 1; y >= 0; y--) {
+               array[x].push(array[y].shift())
+            }
+         }
+         return array
+      }
+
+
+
+      function rotating_outofplace(array, n) {
+         const newArray = []
+         for (let y = 0; y < n; y++) {
+            const row = []
+            for (let x = 0; x < n; x++) {
+               row.unshift(array[x][y])
+            }
+            newArray.push(row)
+         }
+         return newArray
+      }
+
+      console.log(rotating_inplace(
+         [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+         ], 3
+      ));
+
+      // console.log(rotating_outofplace(
+      //    [
+      //       [1, 2, 3],
+      //       [4, 5, 6],
+      //       [7, 8, 9]
+      //    ], 3
+      // ));
+
+
+
+
       // 019 Find Where to Expand in Minesweeper (Difficulty = ___)
-
-
       function Minesweeper_reveal(field, num_rows, num_cols, given_i, given_j) {
 
          if (field[given_i][given_j] !== 0) return field
@@ -42,12 +84,12 @@
 
 
 
-      console.log(
-         Minesweeper_reveal([[-1, 1, 0, 0, 0], [1, 2, 1, 2, 1], [0, 1, -1, 2, -1], [0, 1, 1, 2, 1], [0, 0, 0, 0, 0]
-         ],
-            5, 5,
-            0, 3)
-      )
+      // console.log(
+      //    Minesweeper_reveal([[-1, 1, 0, 0, 0], [1, 2, 1, 2, 1], [0, 1, -1, 2, -1], [0, 1, 1, 2, 1], [0, 0, 0, 0, 0]
+      //    ],
+      //       5, 5,
+      //       0, 3)
+      // )
 
 
       /*
