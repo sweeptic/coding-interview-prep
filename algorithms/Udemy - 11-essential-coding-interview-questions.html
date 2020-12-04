@@ -12,6 +12,57 @@
 
    <script>
 
+      // 026 N-th Element of a Linked List (Difficulty = __)
+
+
+      function Node(value, child) {
+         this.value = value
+         this.child = child //Node
+      }
+      const node_1 = new Node(1, null)
+      const node_2 = new Node(2, node_1)
+      const node_3 = new Node(3, node_2)
+      const node_4 = new Node(4, node_3)
+      const node_5 = new Node(5, node_4)
+      const head = node_5
+
+
+      function nth_from_end(head, n) {
+         let pointer = head;
+         let count = 1
+         while (pointer.child !== null) {
+            pointer = pointer.child
+            count++
+         }
+         pointer = head;
+
+         for (let index = 0; count - n !== index; index++) {
+            pointer = pointer.child
+         }
+         return pointer.value;
+      }
+
+
+      console.log(nth_from_end(head, 3))
+
+
+      /*
+            function Node_2() {
+               const newplayer = Object.create(null)
+               newplayer.value = 7
+               newplayer.child = undefined //Node
+               return newplayer
+            }
+      
+            function Node_3() {
+               const newplayer = {
+                  value: 7,
+                  child: undefined //Node
+               }
+               return newplayer
+            }
+      */
+
       // 023 Rotating 2D Array (inplace / Out-of-Place Solution)
 
       function rotating_inplace(array, n) {
@@ -37,13 +88,13 @@
          return newArray
       }
 
-      console.log(rotating_inplace(
-         [
-            [1, 2, 3],
-            [4, 5, 6],
-            [7, 8, 9]
-         ], 3
-      ));
+      // console.log(rotating_inplace(
+      //    [
+      //       [1, 2, 3],
+      //       [4, 5, 6],
+      //       [7, 8, 9]
+      //    ], 3
+      // ));
 
       // console.log(rotating_outofplace(
       //    [
