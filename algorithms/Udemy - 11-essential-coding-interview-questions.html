@@ -12,20 +12,112 @@
 
    <script>
 
+
+      // 028 Is This a Binary Search Tree_ (Difficulty = __)
+
+
+
+      // function is_binary_tree(headP, val = headP.value) {
+      //    if (headP.left === undefined || headP.right === undefined) {
+      //       return
+      //    }
+      //    console.log(headP.left.value, headP.right.value, val);
+      //    let left = headP.left
+      //    let right = headP.right
+      //    is_binary_tree(left, headP.value)
+      //    is_binary_tree(right, headP.value)
+      //    return 'f'
+      // }
+
+
+      function isValidBST(node, min = null, max = null) {
+
+         if (!node) return true
+
+         if (max !== null && node.data >= max) {
+            return false
+         }
+
+         if (min !== null && node.data <= min) {
+            return false
+         }
+
+         const leftSide = isValidBST(node.left, min, node.data)
+         const rightSide = isValidBST(node.right, node.data, max)
+         return leftSide && rightSide
+      }
+
+
+
+
+      // console.log(node, min, max);
+
+      // if (!node) return true;
+      // if (max !== null && node.data >= max) {
+      //    return false;
+      // }
+      // if (min !== null && node.data <= min) {
+      //    return false;
+      // }
+      // const leftSide = this.isValidBST(node.left, min, node.data);
+      // const rightSide = this.isValidBST(node.right, node.data, max);
+
+      // return leftSide && rightSide;
+
+
+
+
+      const nodeA_6 = new BNode(6,)
+      const nodeA_4 = new BNode(4,)
+      const nodeA_2 = new BNode(2,)
+      const nodeA_0 = new BNode(0,)
+      const nodeA_5 = new BNode(5, nodeA_4, nodeA_6)
+      const nodeA_1 = new BNode(1, nodeA_0, nodeA_2)
+      const nodeA_3 = new BNode(3, nodeA_1, nodeA_5)
+      const headA = nodeA_3
+
+      const nodeB_3 = new BNode(3,)
+      const nodeB_0 = new BNode(0,)
+      const nodeB_2 = new BNode(2,)
+      const nodeB_1 = new BNode(1, nodeB_0, nodeB_3)
+      const nodeB_4 = new BNode(4, nodeB_1, nodeB_2)
+      const headB = nodeB_4
+
+
+      const nodeC_6 = new BNode(6, null, null)
+      const nodeC_3 = new BNode(3, null, null)
+      const nodeC_2 = new BNode(2, null, null)
+      const nodeC_0 = new BNode(0, null, null)
+      const nodeC_5 = new BNode(5, nodeC_3, nodeC_6)
+      const nodeC_1 = new BNode(1, nodeC_0, nodeC_2)
+      const nodeC_4 = new BNode(4, nodeC_1, nodeC_5)
+      const headC = nodeC_4
+
+      // console.log(isValidBST(headA));
+      // console.log(isValidBST(headB))
+      // console.log(isValidBST(headC))
+
+
+      function BNode(value, childA = null, childB = null) {
+         this.data = value
+         this.left = childA //Node
+         this.right = childB //Node
+      }
+
+
       // 026 N-th Element of a Linked List (Difficulty = __)
-
-
       function Node(value, child) {
          this.value = value
          this.child = child //Node
       }
-      const node_1 = new Node(1, null)
-      const node_2 = new Node(2, node_1)
-      const node_3 = new Node(3, node_2)
-      const node_4 = new Node(4, node_3)
-      const node_5 = new Node(5, node_4)
-      const head = node_5
-
+      /*
+            const node_1 = new Node(1, null)
+            const node_2 = new Node(2, node_1)
+            const node_3 = new Node(3, node_2)
+            const node_4 = new Node(4, node_3)
+            const node_5 = new Node(5, node_4)
+            const head = node_5
+      */
 
       function nth_from_end(head, n) {
          let pointer = head;
@@ -43,7 +135,7 @@
       }
 
 
-      console.log(nth_from_end(head, 3))
+      // console.log(nth_from_end(head, 3))
 
 
       /*
