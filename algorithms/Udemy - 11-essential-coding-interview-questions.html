@@ -11,6 +11,76 @@
 
 
    <script>
+      /*
+      function merger(left, right) {
+               const array = []
+               while (left.length && right.length) {
+                  left[0] < right[0] ? array.push(left.shift()) : array.push(right.shift())
+               }
+               return [...array, ...left, ...right]
+            }
+      
+            function mergesort(array) {
+               if (array.length <= 1) return array;
+               const middle = array.length / 2;
+               const left = mergesort(array.slice(0, middle));
+               const right = mergesort(array.slice(middle));
+               return merger(left, right)
+            }
+-------------------------------------------------
+            function quicksort(array) {
+               if (array.length <= 1) return array;
+               const pivot = array.shift()
+               let left = []
+               let right = []
+               array.map(item => item < pivot ? left.push(item) : right.push(item))
+               return [...quicksort(left), pivot, ...quicksort(right)]
+            }
+      
+      */
+      // 031 Lowest Common Ancestor (Difficulty = ___)
+
+
+
+
+
+      function lowestCommonAncestor_bejaras(root) {
+         if (root.left == null || root.right == null) {
+            let arr = []
+            arr.push(root.data)
+            return arr
+         }
+
+         let leftNode = this.lowestCommonAncestor_bejaras(root.left);
+         let rightNode = this.lowestCommonAncestor_bejaras(root.right);
+         return [...leftNode, ...rightNode, root.data]
+      }
+
+
+      function lowestCommonAncestor(root, p, q) {
+         // console.log(root);
+
+         if (root == null) {
+            return null;
+         }
+         if (root.data == p || root.data == q) {
+            return root;
+         }
+         let leftNode = this.lowestCommonAncestor(root.left, p, q);
+         let rightNode = this.lowestCommonAncestor(root.right, p, q);
+
+         if (leftNode && rightNode) {
+            return root;
+         }
+         if (!leftNode && !rightNode) return null;
+         return leftNode ? leftNode : rightNode;
+      }
+
+
+
+
+
+
 
 
       // 028 Is This a Binary Search Tree_ (Difficulty = __)
@@ -48,8 +118,6 @@
       }
 
 
-
-
       // console.log(node, min, max);
 
       // if (!node) return true;
@@ -65,16 +133,22 @@
       // return leftSide && rightSide;
 
 
-
-
+      const nodeA_7 = new BNode(7,)
       const nodeA_6 = new BNode(6,)
-      const nodeA_4 = new BNode(4,)
       const nodeA_2 = new BNode(2,)
-      const nodeA_0 = new BNode(0,)
-      const nodeA_5 = new BNode(5, nodeA_4, nodeA_6)
-      const nodeA_1 = new BNode(1, nodeA_0, nodeA_2)
-      const nodeA_3 = new BNode(3, nodeA_1, nodeA_5)
-      const headA = nodeA_3
+      const nodeA_9 = new BNode(9,)
+      const nodeA_8 = new BNode(8,)
+      const nodeA_3 = new BNode(3, nodeA_6, nodeA_7)
+      const nodeA_4 = new BNode(4, nodeA_9, nodeA_2)
+      const nodeA_1 = new BNode(1, nodeA_3, nodeA_8)
+      const nodeA_5 = new BNode(5, nodeA_1, nodeA_4)
+      const headA = nodeA_5
+
+      console.log('returned', lowestCommonAncestor_bejaras(headA))
+      console.log('returned', lowestCommonAncestor(headA, 8, 7))
+      // console.log(lowestCommonAncestor(headA, 1, 5))
+      // console.log(lowestCommonAncestor(headA, 2, 2))
+
 
       const nodeB_3 = new BNode(3,)
       const nodeB_0 = new BNode(0,)
