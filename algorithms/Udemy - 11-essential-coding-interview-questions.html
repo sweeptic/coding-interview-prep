@@ -41,41 +41,74 @@
       // 031 Lowest Common Ancestor (Difficulty = ___)
 
 
-
-
-
       function lowestCommonAncestor_bejaras(root) {
-         if (root.left == null || root.right == null) {
-            let arr = []
-            arr.push(root.data)
-            return arr
+         if (root.left === null && root.right === null) {
+            const array = []
+            array.push(root.data)
+            return array
          }
-
-         let leftNode = this.lowestCommonAncestor_bejaras(root.left);
-         let rightNode = this.lowestCommonAncestor_bejaras(root.right);
-         return [...leftNode, ...rightNode, root.data]
+         const leftS = lowestCommonAncestor_bejaras(root.left)
+         const rightS = lowestCommonAncestor_bejaras(root.right)
+         return [...leftS, ...rightS, root.data]
       }
 
 
       function lowestCommonAncestor(root, p, q) {
-         // console.log(root);
+         if (!root) return
 
-         if (root == null) {
-            return null;
+         if (root.data === p || root.data === q) {
+            return root
          }
-         if (root.data == p || root.data == q) {
-            return root;
-         }
-         let leftNode = this.lowestCommonAncestor(root.left, p, q);
-         let rightNode = this.lowestCommonAncestor(root.right, p, q);
 
-         if (leftNode && rightNode) {
-            return root;
-         }
-         if (!leftNode && !rightNode) return null;
-         return leftNode ? leftNode : rightNode;
+         let left = lowestCommonAncestor(root.left, p, q)
+         let right = lowestCommonAncestor(root.right, p, q)
+
+         // console.log(left, right);
+         if (left && right) return root
+
+         return left ? left : right
       }
 
+
+
+
+
+
+
+
+      /*
+            function lowestCommonAncestor_bejaras(root) {
+               if (root.left == null || root.right == null) {
+                  let arr = []
+                  arr.push(root.data)
+                  return arr
+               }
+      
+               let leftNode = this.lowestCommonAncestor_bejaras(root.left);
+               let rightNode = this.lowestCommonAncestor_bejaras(root.right);
+               return [...leftNode, ...rightNode, root.data]
+            }
+      
+      
+            function lowestCommonAncestor(root, p, q) {
+               // console.log(root);
+      
+               if (root == null) {
+                  return null;
+               }
+               if (root.data == p || root.data == q) {
+                  return root;
+               }
+               let leftNode = this.lowestCommonAncestor(root.left, p, q);
+               let rightNode = this.lowestCommonAncestor(root.right, p, q);
+      
+               if (leftNode && rightNode) {
+                  return root;
+               }
+               if (!leftNode && !rightNode) return null;
+               return leftNode ? leftNode : rightNode;
+            }
+      */
 
 
 
